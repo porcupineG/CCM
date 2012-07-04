@@ -1,30 +1,28 @@
-main.d main.o: ../main.cpp ../easykf/ukf.h \
- /home/porcupine/ccm/CCM/easykf/ukf_math.h \
- /home/porcupine/ccm/CCM/easykf/ukf_types.h \
- /home/porcupine/ccm/CCM/easykf/ukf_samples.h \
- /home/porcupine/ccm/CCM/easykf/ukf_parameter_scalar.h \
- /home/porcupine/ccm/CCM/easykf/ukf_parameter_ndim.h \
- /home/porcupine/ccm/CCM/easykf/ukf_state_ndim.h \
- /home/porcupine/ccm/CCM/easykf/ukf_sr_state_ndim.h \
- /home/porcupine/ccm/CCM/easykf/ekf.h \
- /home/porcupine/ccm/CCM/easykf/ekf_types.h
+main.d: ../main.cpp ../kalman/ekfilter.hpp ../kalman/kvector.hpp \
+ ../kalman/ktypes.hpp ../kalman/kvector_impl.hpp ../kalman/kmatrix.hpp \
+ ../kalman/kmatrix_impl.hpp ../kalman/ekfilter_impl.hpp \
+ ../frequency_tracker.h ../meas.h ../defines.h ../noise.h ../signal.h
 
-../easykf/ukf.h:
+../kalman/ekfilter.hpp:
 
-/home/porcupine/ccm/CCM/easykf/ukf_math.h:
+../kalman/kvector.hpp:
 
-/home/porcupine/ccm/CCM/easykf/ukf_types.h:
+../kalman/ktypes.hpp:
 
-/home/porcupine/ccm/CCM/easykf/ukf_samples.h:
+../kalman/kvector_impl.hpp:
 
-/home/porcupine/ccm/CCM/easykf/ukf_parameter_scalar.h:
+../kalman/kmatrix.hpp:
 
-/home/porcupine/ccm/CCM/easykf/ukf_parameter_ndim.h:
+../kalman/kmatrix_impl.hpp:
 
-/home/porcupine/ccm/CCM/easykf/ukf_state_ndim.h:
+../kalman/ekfilter_impl.hpp:
 
-/home/porcupine/ccm/CCM/easykf/ukf_sr_state_ndim.h:
+../frequency_tracker.h:
 
-/home/porcupine/ccm/CCM/easykf/ekf.h:
+../meas.h:
 
-/home/porcupine/ccm/CCM/easykf/ekf_types.h:
+../defines.h:
+
+../noise.h:
+
+../signal.h:
