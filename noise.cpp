@@ -7,6 +7,10 @@
 
 #include "noise.h"
 
+#include <iostream>
+
+using namespace std;
+
 Noise::Noise() {
 	value.resize(N);
 
@@ -45,5 +49,6 @@ double Noise::gaussrand() {
 
 	phase = 1 - phase;
 
+	//cout << X << endl;
 	return X;
 }

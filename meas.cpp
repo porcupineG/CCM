@@ -16,6 +16,7 @@ Meas::Meas() {
 	yfile.open("y.dat");
 	for (int n = 0; n < N; n++) {
 		Y(n) = cabs(signal.value[n] + An * noise.value[n]) * cos(carg(signal.value[n] + An * noise.value[n]));
+		//Y(n) = cabs(signal.value[n] + 0 * noise.value[n]) * cos(carg(signal.value[n] + An * noise.value[n]));
 		yfile << Y(n) << endl;
 	}
 	yfile.close();

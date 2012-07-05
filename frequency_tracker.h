@@ -25,10 +25,10 @@ protected:
         void makeProcess();
         void makeMeasure();
 
-        double alpha, epsilon;
+        double e, r, q;
 
 public:
-	FrequencyTracker();
+	FrequencyTracker(double epsilon, double r, double q);
 	virtual ~FrequencyTracker();
 };
 

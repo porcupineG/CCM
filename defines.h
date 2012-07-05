@@ -9,14 +9,14 @@
 #define DEFINES_H_
 
 #define T 					(2.0)
-#define N 					(10000)
+#define N 					(1000)
 
 #define Ts 					((double) (2 * T) / (double) N)
 
 #define A0 					(2.0)
 #define An 					(2.0)
-#define F0 					(50.0)
-#define ALFA 				(10.0)
+#define F0 					(20.0)
+#define ALFA 				(4.0)
 #define F1 					(F0 - 2 * ALFA * T)
 
 
