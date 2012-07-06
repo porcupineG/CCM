@@ -50,11 +50,11 @@ int main(int argc, char* argv[]) {
 
 	ofstream xfile;
 	xfile.open("x.dat");
-	for (int i = 2; i <= N; ++i) {
+	for (int i = 0; i < N; ++i) {
 		z(0) = meas.Y(i);
 
 		frequencyTracker.step(u, z);
-		xfile << frequencyTracker.getX()(2) << endl;
+		xfile << abs(frequencyTracker.getX()(2)) / 2 * M_PI << endl;
 	}
 
 	cout << "CCM - EKF frequency tracking end" << endl;

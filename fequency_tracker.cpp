@@ -31,9 +31,6 @@ void FrequencyTracker::makeBaseA() {
 
 void FrequencyTracker::makeBaseH() {
 	H(0,0) = 1.0;
-	H(0,1) = 0.0;
-	H(1,0) = 0.0;
-	H(1,1) = 1.0;
 }
 
 void FrequencyTracker::makeBaseV() {
@@ -42,9 +39,6 @@ void FrequencyTracker::makeBaseV() {
 
 void FrequencyTracker::makeBaseR() {
 	R(0,0) = r * r;
-	R(0,1) = 0.0;
-	R(1,0) = 0.0;
-	R(1,1) = r * r;
 }
 
 void FrequencyTracker::makeBaseW() {
@@ -77,22 +71,19 @@ void FrequencyTracker::makeBaseQ() {
 }
 
 void FrequencyTracker::makeA() {
-	A(0,0) = cos(x(3));
-	A(0,1) = -sin(x(3));
-	A(0,2) = -x(1) * sin(x(3)) - x(2) * cos(x(3));
+	A(0,0) = cos(x(2));
+	A(0,1) = -sin(x(2));
+	A(0,2) = -x(0) * sin(x(2)) - x(1) * cos(x(2));
 
-	A(1,0) = sin(x(3));
-	A(1,1) = cos(x(3));
-	A(1,2) = x(1) * cos(x(3)) - x(2) * sin(x(3));
+	A(1,0) = sin(x(2));
+	A(1,1) = cos(x(2));
+	A(1,2) = x(0) * cos(x(2)) - x(1) * sin(x(2));
 
 	A(2,2) = (1 - e);
 }
 
 void FrequencyTracker::makeH() {
-	H(0,0) = 1.0;
-	H(0,1) = 0.0;
-	H(1,0) = 0.0;
-	H(1,1) = 1.0;
+
 }
 
 void FrequencyTracker::makeProcess() {
@@ -104,6 +95,5 @@ void FrequencyTracker::makeProcess() {
 }
 
 void FrequencyTracker::makeMeasure() {
-	z(1)= x(1);
-//	z(2)= x(2);
+	z(0)= x(0);
 }
