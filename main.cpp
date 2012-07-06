@@ -46,16 +46,15 @@ int main(int argc, char* argv[]) {
 
 	frequencyTracker.init(x, P0);
 	Vector z(1);
-	Vector u(0);
+	Vector u(3);
 
 	ofstream xfile;
 	xfile.open("x.dat");
 	for (int i = 2; i <= N; ++i) {
-		z(1) = meas.Y(i);
-//		z(2) = meas.Qp(i);
+		z(0) = meas.Y(i);
 
 		frequencyTracker.step(u, z);
-		xfile << frequencyTracker.getX()(3) << endl;
+		xfile << frequencyTracker.getX()(2) << endl;
 	}
 
 	cout << "CCM - EKF frequency tracking end" << endl;

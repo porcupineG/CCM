@@ -25,95 +25,81 @@ FrequencyTracker::~FrequencyTracker() {
 }
 
 void FrequencyTracker::makeBaseA() {
-	//A(1,1) = cos(x(3));
-	//A(1,2) = -sin(x(3));
-	//A(1,3) = -x(1) * sin(x(3)) - x(2) * cos(x(3));
-
-	//A(2,1) = sin(x(3));
-	//A(2,2) = cos(x(3));
-	//A(2,3) = x(1) * cos(x(3)) - x(2) * sin(x(3));
-
-	A(3,1) = 0.0;
-	A(3,2) = 0.0;
-	//A(3,3) = (1 - epsilon);
+	A(2,0) = 0.0;
+	A(2,1) = 0.0;
 }
 
 void FrequencyTracker::makeBaseH() {
+	H(0,0) = 1.0;
+	H(0,1) = 0.0;
+	H(1,0) = 0.0;
 	H(1,1) = 1.0;
-	H(1,2) = 0.0;
-	H(2,1) = 0.0;
-	H(2,2) = 1.0;
 }
 
 void FrequencyTracker::makeBaseV() {
-	V(1,1) = 1.0;
-//	V(1,2) = 0.0;
-//	V(2,1) = 0.0;
-//	V(2,2) = 1.0;
+	V(0,0) = 1.0;
 }
 
 void FrequencyTracker::makeBaseR() {
+	R(0,0) = r * r;
+	R(0,1) = 0.0;
+	R(1,0) = 0.0;
 	R(1,1) = r * r;
-	R(1,2) = 0.0;
-	R(2,1) = 0.0;
-	R(2,2) = r * r;
 }
 
 void FrequencyTracker::makeBaseW() {
+	W(0,0) = 1.0;
+	W(0,1) = 0.0;
+	W(0,2) = 0.0;
+
+	W(1,0) = 0.0;
 	W(1,1) = 1.0;
 	W(1,2) = 0.0;
-	W(1,3) = 0.0;
 
+	W(2,0) = 0.0;
 	W(2,1) = 0.0;
 	W(2,2) = 1.0;
-	W(2,3) = 0.0;
-
-	W(3,1) = 0.0;
-	W(3,2) = 0.0;
-	W(3,3) = 1.0;
 
 }
 
 void FrequencyTracker::makeBaseQ() {
+	Q(0,0) = q * q;
+	Q(0,1) = q * q;
+	Q(0,2) = 0.0;
+
+	Q(1,0) = q * q;
 	Q(1,1) = q * q;
-	Q(1,2) = q * q;
-	Q(1,3) = 0.0;
+	Q(1,2) = 0.0;
 
-	Q(2,1) = q * q;
+	Q(2,0) = 0.0;
+	Q(2,1) = 0.0;
 	Q(2,2) = q * q;
-	Q(2,3) = 0.0;
-
-	Q(3,1) = 0.0;
-	Q(3,2) = 0.0;
-	Q(3,3) = q * q;
 }
 
 void FrequencyTracker::makeA() {
+	A(0,0) = cos(x(3));
+	A(0,1) = -sin(x(3));
+	A(0,2) = -x(1) * sin(x(3)) - x(2) * cos(x(3));
+
+	A(1,0) = sin(x(3));
 	A(1,1) = cos(x(3));
-	A(1,2) = -sin(x(3));
-	A(1,3) = -x(1) * sin(x(3)) - x(2) * cos(x(3));
+	A(1,2) = x(1) * cos(x(3)) - x(2) * sin(x(3));
 
-	A(2,1) = sin(x(3));
-	A(2,2) = cos(x(3));
-	A(2,3) = x(1) * cos(x(3)) - x(2) * sin(x(3));
-
-	//A(3,1) = 0.0;
-	//A(3,2) = 0.0;
-	A(3,3) = (1 - e);
+	A(2,2) = (1 - e);
 }
 
 void FrequencyTracker::makeH() {
-	//H(1,1) = 1.0;
-	//H(1,2) = 0.0;
-	//H(2,1) = 0.0;
-	//H(2,2) = 1.0;
+	H(0,0) = 1.0;
+	H(0,1) = 0.0;
+	H(1,0) = 0.0;
+	H(1,1) = 1.0;
 }
 
 void FrequencyTracker::makeProcess() {
 	static Vector x_(x.size());
-	x_(1) = x(1) * cos(x(3)) - x(2) * sin(x(3));
-	x_(2) = x(1) * sin(x(3)) + x(2) * cos(x(3));
-	x_(3) = x(3) * (1 - e);
+	x_(0) = x(0) * cos(x(2)) - x(1) * sin(x(2));
+	x_(1) = x(0) * sin(x(2)) + x(1) * cos(x(2));
+	x_(2) = x(2) * (1 - e);
 	x.swap(x_);
 }
 

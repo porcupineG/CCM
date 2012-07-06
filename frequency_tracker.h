@@ -11,7 +11,7 @@
 #include "kalman/ekfilter.hpp"
 #include <math.h>
 
-class FrequencyTracker: public Kalman::EKFilter<double,1,false,true,false>{
+class FrequencyTracker: public Kalman::EKFilter<double, 0, false, false, true>{
 protected:
         void makeBaseA();
         void makeBaseH();

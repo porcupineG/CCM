@@ -4,7 +4,7 @@
 // Copyright (C) 2004        Vincent Zalzal, Sylvain Marleau
 // Copyright (C) 2001, 2004  Richard Gourdeau
 // Copyright (C) 2004        GRPR and DGE's Automation sector
-//                           École Polytechnique de Montréal
+//                           ï¿½cole Polytechnique de Montrï¿½al
 //
 // Code adapted from algorithms presented in :
 //      Bierman, G. J. "Factorization Methods for Discrete Sequential
@@ -26,6 +26,8 @@
 
 #ifndef EKFILTER_IMPL_HPP
 #define EKFILTER_IMPL_HPP
+
+#include <iostream>
 
 //! \file
 //! \brief Contains the implementation of the \c EKFilter base template class.
@@ -567,8 +569,12 @@ namespace Kalman {
       // First, resize U and copy P in its left part
       U.resize(n, nn);
       for (K_UINT_32 i = BEG; i < n + BEG; ++i)
-        for (K_UINT_32 j = BEG; j < n + BEG; ++j)
-          U(i,j) = _P(i,j);
+        for (K_UINT_32 j = BEG; j < n + BEG; ++j) {
+        	std::cout << "P " << _P(i,j) << " " << i << j << std::endl;
+        	std::cout << "U " << U(i,j) << " " << i << j <<  std::endl;
+        	U(i,j) = _P(i,j);
+        }
+
       
       // Factorize
       factor(U);
@@ -626,8 +632,8 @@ namespace Kalman {
   template<typename T, K_UINT_32 BEG, bool OQ, bool OVR, bool DBG>
   void EKFilter<T, BEG, OQ, OVR, DBG>::factor(Matrix& P_) {
 
-    // ne pas vérifier que P_.ncol() == P_.nrow(), comme ça, même si
-    // nrow() < ncol(), on peut factoriser la sous-matrice carrée de P
+    // ne pas vï¿½rifier que P_.ncol() == P_.nrow(), comme ï¿½a, mï¿½me si
+    // nrow() < ncol(), on peut factoriser la sous-matrice carrï¿½e de P
     // Utile pour factoriser U
 
     T alpha, beta;
