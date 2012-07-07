@@ -19,8 +19,7 @@ Signal::Signal() {
 	ofstream infile;
 	infile.open("fq.dat");
 	for (int n = 1; n < N; n++) {
-			infile << (phase(n) - phase(n - 1)) / (2 * M_PI) << endl;
-//			infile << phase(n) << endl;
+			infile << (phase(n) - phase(n - 1)) / (Ts * 2 * M_PI) << endl;
 	}
 	infile.close();
 }

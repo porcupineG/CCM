@@ -1,4 +1,4 @@
-noise.d noise.o: ../noise.cpp ../noise.h ../defines.h
+noise.d: ../noise.cpp ../noise.h ../defines.h
 
 ../noise.h:
 

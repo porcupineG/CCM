@@ -40,9 +40,9 @@ int main(int argc, char* argv[]) {
 	Matrix P0(3, 3, _P0);
 
 	Vector x(3);
-	x(0) = 0.5;
-	x(1) = 0.5;
-	x(2) = 0.5;
+	x(0) = 0.1;
+	x(1) = 0.1;
+	x(2) = 0.1;
 
 	frequencyTracker.init(x, P0);
 	Vector z(1);
@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
 		z(0) = meas.Y(i);
 
 		frequencyTracker.step(u, z);
-		xfile << abs(frequencyTracker.getX()(2)) / 2 * M_PI << endl;
+		xfile << abs(frequencyTracker.getX()(2)) / (2 * M_PI * Ts) << endl;
 	}
 
 	cout << "CCM - EKF frequency tracking end" << endl;
