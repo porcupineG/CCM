@@ -6,8 +6,10 @@
  */
 
 #include "signal.h"
-
+#include "signal_utility.h"
 #include <fstream>
+#include <math.h>
+#include <complex.h>
 
 Signal::Signal() {
 	value.resize(N);
@@ -19,7 +21,14 @@ Signal::Signal() {
 	ofstream infile;
 	infile.open("fq.dat");
 	for (int n = 1; n < N; n++) {
-			infile << (phase(n) - phase(n - 1)) / (Ts * 2 * M_PI) << endl;
+			infile << (phase(n) - phase(n - 1)) / (Ts * 2 * M_PI) << " " << (n * Ts) << endl;
+			frequency.push_back((phase(n) - phase(n - 1)) / (Ts * 2 * M_PI));
+	}
+	infile.close();
+
+	infile.open("s.dat");
+	for (int n = 0; n < N; n++) {
+			infile << cabs(value[n]) * cos(carg(value[n])) << " " << (n * Ts) << endl;
 	}
 	infile.close();
 }

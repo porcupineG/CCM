@@ -8,6 +8,9 @@
 #include "noise.h"
 
 #include <iostream>
+#include <fstream>
+#include <math.h>
+#include <complex.h>
 
 using namespace std;
 
@@ -15,12 +18,19 @@ Noise::Noise() {
 	value.resize(N);
 
 	for (int n = 0; n < N; n++) {
-		value[n] = 0.1 * gaussrand();
+		value[n] = An * gaussrand();
 	}
 
 	for (int n = 0; n < N; n++) {
-		value[n] += gaussrand() * _Complex_I;
+		value[n] += An * gaussrand() * _Complex_I;
 	}
+
+	ofstream infile;
+	infile.open("n.dat");
+	for (int n = 0; n < N; n++) {
+			infile << cabs(value[n]) * cos(carg(value[n])) << " " << (n * Ts) << endl;
+	}
+	infile.close();
 }
 
 Noise::~Noise() {

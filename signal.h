@@ -25,6 +25,6 @@ public:
 	Signal();
 	virtual ~Signal();
 	vector<complex double> value;
+	vector<double> frequency;
 };
-
 #endif /* Signal_H_ */
