@@ -8,28 +8,31 @@ CPP_SRCS += \
 ../main.cpp \
 ../meas.cpp \
 ../noise.cpp \
-../signal.cpp 
+../signal.cpp \
+../signal_utility.cpp 
 
 OBJS += \
 ./fequency_tracker.o \
 ./main.o \
 ./meas.o \
 ./noise.o \
-./signal.o 
+./signal.o \
+./signal_utility.o 
 
 CPP_DEPS += \
 ./fequency_tracker.d \
 ./main.d \
 ./meas.d \
 ./noise.d \
-./signal.d 
+./signal.d \
+./signal_utility.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
 %.o: ../%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	g++ -O0 -g3 -Wall -c -fmessage-length=0 -DPIC -fPIC -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
